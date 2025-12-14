@@ -6,6 +6,7 @@ import {
   type FetchBaseQueryError,
 } from "@reduxjs/toolkit/query/react";
 import { Mutex } from "async-mutex";
+import { logout } from "../features/auth/authSlice";
 
 const mutex = new Mutex();
 
@@ -38,8 +39,7 @@ const fetchQueryWithReauth: BaseQueryFn<
         if (refreshResult.data) {
           result = await baseQuery(args, api, extraOptions);
         } else {
-          //Todo : Create Logout
-          //api.dispatch(logout());
+          api.dispatch(logout());
         }
       } finally {
         release();

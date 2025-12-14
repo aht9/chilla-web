@@ -5,7 +5,6 @@ import { GuestGuard } from "../components/layout/GuestGuard";
 import { AuthGuard } from "../components/layout/AuthGuard";
 
 // --- Lazy Loading (برای کاهش حجم باندل اولیه) ---
-// صفحاتی که هنوز نساختیم را فعلا کامنت یا ساده می‌کنیم
 const AuthPage = React.lazy(() =>
   import("../features/auth/AuthPage").then((module) => ({
     default: module.AuthPage,

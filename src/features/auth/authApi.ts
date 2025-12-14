@@ -1,47 +1,92 @@
-import type { RootState } from "../../app/store";
 import { api } from "../../services/api";
-import { setCredentials } from "./authSlice";
+import { setCredentials, logout as logoutAction } from "./authSlice";
 import type {
-  RegisterRequest,
-  VerifyOtpRequest,
-  LoginRequest,
-  SendOtpRequest,
-  User,
+  RequestOtpRequest,
+  LoginOtpRequest,
+  LoginPasswordRequest,
+  CompleteProfileRequest,
+  LoginResponseDto,
+  ForgotPasswordRequest,
+  ResetPasswordRequest,
+  UserProfileDto,
 } from "./types";
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    //1.login
-    login: builder.mutation<User, LoginRequest>({
-      query: (credentials) => ({
-        url: "auth/login",
+    // 1. Request OTP
+    requestOtp: builder.mutation<void, RequestOtpRequest>({
+      query: (body) => ({
+        url: "auth/request-otp",
         method: "POST",
-        body: credentials,
+        body,
+      }),
+    }),
+
+    // 2. Login with OTP
+    // نکته: اینجا User ست نمی‌شود، فقط تگ باطل می‌شود تا getProfile دوباره دیتا بگیرد
+    loginOtp: builder.mutation<LoginResponseDto, LoginOtpRequest>({
+      query: (body) => ({
+        url: "auth/login-otp",
+        method: "POST",
+        body,
       }),
       invalidatesTags: ["User"],
-      async onQueryStarted(_, { dispatch, queryFulfilled, getState }) {
-        const state = getState() as RootState;
-        if (state.auth.isAuthenticated) {
-          console.warn("User is already logged in!");
-          return;
-        }
+    }),
 
+    // 3. Login with Password
+    loginPassword: builder.mutation<LoginResponseDto, LoginPasswordRequest>({
+      query: (body) => ({
+        url: "auth/login-password",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+
+    // 4. Refresh Token
+    refreshToken: builder.mutation<LoginResponseDto, void>({
+      query: () => ({
+        url: "auth/refresh-token",
+        method: "POST",
+      }),
+      invalidatesTags: ["User"],
+    }),
+
+    // 5. Complete Profile
+    completeProfile: builder.mutation<void, CompleteProfileRequest>({
+      query: (body) => ({
+        url: "auth/complete-profile",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+
+    // 6. Logout
+    logout: builder.mutation<void, void>({
+      query: () => ({
+        url: "auth/logout",
+        method: "POST",
+      }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
-          const { data } = await queryFulfilled;
-          dispatch(setCredentials(data));
+          await queryFulfilled;
+          dispatch(logoutAction());
+          dispatch(api.util.resetApiState());
         } catch {
           /* empty */
         }
       },
     }),
 
-    //2.get user detail
-    getProfile: builder.query<User, void>({
-      query: () => "auth/me",
+    // 7. Get User Profile (منبع اصلی اطلاعات کاربر)
+    getProfile: builder.query<UserProfileDto, void>({
+      query: () => "users/me",
       providesTags: ["User"],
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
+          // وقتی اطلاعات کاربر آمد، در ریداکس ذخیره می‌شود و isAuthenticated true می‌شود
           dispatch(setCredentials(data));
         } catch {
           /* empty */
@@ -49,48 +94,35 @@ export const authApi = api.injectEndpoints({
       },
     }),
 
-    //3.send sms
-    sendOtp: builder.mutation<void, SendOtpRequest>({
+    // 8. Forgot Password (Request Reset OTP)
+    forgotPassword: builder.mutation<void, ForgotPasswordRequest>({
       query: (body) => ({
-        url: "auth/send-otp",
+        url: "auth/forgot-password",
         method: "POST",
         body,
       }),
     }),
 
-    //4.verify sms
-    verifyOtp: builder.mutation<void, VerifyOtpRequest>({
+    // 9. Reset Password (Confirm OTP & Set New Pass)
+    resetPassword: builder.mutation<void, ResetPasswordRequest>({
       query: (body) => ({
-        url: "auth/verify-otp",
+        url: "auth/reset-password",
         method: "POST",
         body,
       }),
-    }),
-
-    //5.Register User
-    register: builder.mutation<User, RegisterRequest>({
-      query: (body) => ({
-        url: "auth/register",
-        method: "POST",
-        body,
-      }),
-      invalidatesTags: ["User"],
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          dispatch(setCredentials(data));
-        } catch {
-          /*empty */
-        }
-      },
     }),
   }),
 });
 
 export const {
-  useLoginMutation,
+  useRequestOtpMutation,
+  useLoginOtpMutation,
+  useLoginPasswordMutation,
+  useCompleteProfileMutation,
+  useRefreshTokenMutation,
+  useLogoutMutation,
   useGetProfileQuery,
-  useSendOtpMutation,
-  useVerifyOtpMutation,
-  useRegisterMutation,
+  useLazyGetProfileQuery,
+  useForgotPasswordMutation,
+  useResetPasswordMutation,
 } = authApi;
