@@ -23,22 +23,39 @@ export const MobileEntryForm = ({
   isLoading,
   onSwitchToPassword,
 }: MobileEntryProps) => {
-  const [error, setError] = useState<string | null>(null);
+  const [errors, setErrors] = useState<
+    Array<{ message: string; isValid: boolean }>
+  >([]);
 
   const handleSubmit = (e?: React.FormEvent) => {
     e?.preventDefault();
-    const result = mobileSchema.safeParse(mobile);
-
-    if (!result.success) {
-      // اگر خطا داشت، اولین پیام خطا را بگیر و در استیت بگذار
-      const errorMessage = result.error.issues[0].message;
-      setError(errorMessage);
+    const hasError = errors.some((e) => !e.isValid);
+    if (hasError) {
       return;
     }
 
-    setError(null); // ارورهای قبلی را پاک کن
-    onSubmit(); // ✅ حالا تابع اصلی (ارسال به سرور) را صدا بزن
+    setErrors([]);
+    onSubmit();
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setMobile(value);
+    const trimmed = value.trim();
+    if (trimmed === "") {
+      setErrors([]);
+    } else {
+      const startsWith09 = trimmed.startsWith("09");
+      const is11Digits = /^\d{11}$/.test(trimmed);
+      const newErrors = [
+        { message: "شماره باید با 09 شروع شود", isValid: startsWith09 },
+        { message: "شماره باید ۱۱ رقم باشد", isValid: is11Digits },
+      ];
+      setErrors(newErrors);
+    }
+  };
+
+  const hasError = errors.some((e) => !e.isValid);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
@@ -50,24 +67,21 @@ export const MobileEntryForm = ({
           <Smartphone
             className={clsx(
               "absolute right-3 top-3 w-5 h-5 transition-colors",
-              error ? "text-red-500" : "text-gray-400" // تغییر رنگ آیکون در صورت خطا
+              hasError ? "text-red-500" : "text-gray-400" // تغییر رنگ آیکون در صورت خطا
             )}
           />
 
           <input
             type="tel"
             value={mobile}
-            // هر بار که کاربر تایپ می‌کند، اگر ارور داشت آن را پاک می‌کنیم (UX بهتر)
-            onChange={(e) => {
-              setMobile(e.target.value);
-              if (error) setError(null);
-            }}
+            // هر بار که کاربر تایپ می‌کند، ولیدیشن را چک می‌کنیم
+            onChange={(e) => handleChange(e)}
             placeholder="0912..."
             maxLength={11}
             className={clsx(
               "w-full h-12 pr-10 pl-4 border rounded-xl outline-none transition-all bg-gray-50 hover:bg-white",
               // لاجیک تغییر رنگ بردر (قرمز در صورت خطا، سیاه در فوکوس)
-              error
+              hasError
                 ? "border-red-500 focus:ring-2 focus:ring-red-200"
                 : "border-gray-200 focus:ring-2 focus:ring-black focus:border-transparent"
             )}
@@ -76,15 +90,21 @@ export const MobileEntryForm = ({
         </div>
 
         {/* --- 5. نمایش پیام خطا --- */}
-        {error && (
-          <p className="text-red-500 text-xs font-medium animate-pulse">
-            {error}
+        {errors.map((err, idx) => (
+          <p
+            key={idx}
+            className={clsx(
+              "text-xs font-medium animate-pulse",
+              err.isValid ? "text-green-500" : "text-red-500"
+            )}
+          >
+            {err.message}
           </p>
-        )}
+        ))}
       </div>
 
       <button
-        disabled={isLoading} // دیگر شرط mobile.length را اینجا نمی‌گذاریم، می‌سپاریم به دکمه
+        disabled={isLoading || mobile.trim() === "" || hasError} // دکمه در صورت خالی بودن یا خطا غیرفعال شود
         className="w-full h-12 bg-black text-white rounded-xl font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {isLoading ? (

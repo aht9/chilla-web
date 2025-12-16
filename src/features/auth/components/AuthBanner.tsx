@@ -1,4 +1,4 @@
-import logoChilla from "../../assets/logo-chilla-login.svg";
+import logoChilla from "../../../assets/logo-chilla-login.svg";
 
 export const AuthBanner = () => (
   <div className="hidden lg:flex flex-col justify-between bg-green-950 text-white w-1/2 p-12 m-4 rounded-[40px] relative overflow-hidden">
@@ -22,29 +22,21 @@ export const AuthBanner = () => (
         <img src={logoChilla} />
       </div>
 
-      <h2 className="text-4xl font-bold mb-4">خوش آمدید به چله</h2>
-      <p className="text-gray-400 leading-relaxed max-w-md">
-        چله به توسعه‌دهندگان کمک می‌کند تا داشبوردهای سازمان‌یافته و با کدنویسی
-        تمیز بسازند.
-      </p>
+      <h2 className="text-4xl font-bold mb-4">به چله خوش آمدید </h2>
+      {/* <p className="text-gray-400 leading-relaxed max-w-md">
+        چله؛ تمرین تداوم.{" "}
+      </p> */}
     </div>
 
     {/* Bottom Card */}
     <div className="bg-gray-800/50 backdrop-blur-md p-6 rounded-3xl border border-gray-700 z-10 relative mt-8">
-      <h3 className="text-xl font-bold mb-2">
-        شغل و جایگاه مناسب خود را پیدا کنید
+      <h3 className="text-l font-bold mb-2 text-justify">
+        «چله» فراتر از یک بازه زمانی چهل‌روزه است؛ این یک دعوت به استمرار است.
+        در دنیایی که همه به دنبال نتایج آنی هستند، این شعار یادآوری می‌کند که
+        راز تغییرات بزرگ، نه در شدت تلاش، بلکه در "تداوم" آن نهفته است. "تمرین
+        تداوم" یعنی ساختن اراده‌ای که با تکرارِ آگاهانه، عادت‌های گذرا را به
+        بخشی جدایی‌ناپذیر و ماندگار از سبک زندگی شما تبدیل می‌کند.{" "}
       </h3>
-      <div className="flex -space-x-2 space-x-reverse mt-4">
-        {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="w-8 h-8 rounded-full bg-gray-500 border-2 border-gray-800"
-          ></div>
-        ))}
-        <div className="w-8 h-8 rounded-full bg-gray-700 border-2 border-gray-800 flex items-center justify-center text-xs text-white">
-          +2
-        </div>
-      </div>
     </div>
   </div>
 );

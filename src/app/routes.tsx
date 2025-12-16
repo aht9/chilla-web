@@ -4,14 +4,12 @@ import { AuthLayout } from "../layouts/AuthLayout";
 import { GuestGuard } from "../components/layout/GuestGuard";
 import { AuthGuard } from "../components/layout/AuthGuard";
 
-// --- Lazy Loading (برای کاهش حجم باندل اولیه) ---
 const AuthPage = React.lazy(() =>
   import("../features/auth/AuthPage").then((module) => ({
     default: module.AuthPage,
   }))
 );
 
-// یک کامپوننت لودینگ ساده برای زمانی که صفحه در حال دانلود است
 const LoadingScreen = () => (
   <div className="h-screen w-full flex items-center justify-center bg-gray-50">
     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-black"></div>
@@ -20,13 +18,12 @@ const LoadingScreen = () => (
 
 export const router = createBrowserRouter([
   {
-    // --- مسیرهای عمومی (Public) ---
     path: "/",
-    element: <Navigate to="/auth/login" replace />, // ریدایرکت پیش‌فرض به لاگین
+    element: <Navigate to="/auth/login" replace />,
   },
   {
     path: "auth",
-    element: <GuestGuard />, // محافظت: اگر لاگین بود نیاید اینجا
+    element: <GuestGuard />,
     children: [
       {
         element: <AuthLayout />,
@@ -39,7 +36,6 @@ export const router = createBrowserRouter([
               </Suspense>
             ),
           },
-          // مسیر ثبت نام هم در همان AuthPage هندل شده (طبق طراحی شما)
           {
             path: "register",
             element: <Navigate to="/auth/login" replace />,
@@ -49,10 +45,9 @@ export const router = createBrowserRouter([
     ],
   },
 
-  // --- مسیرهای خصوصی (Private / Dashboard) ---
   {
     path: "dashboard",
-    element: <AuthGuard />, // محافظت: فقط اگر لاگین بود بیاید
+    element: <AuthGuard />,
     children: [
       {
         index: true,
