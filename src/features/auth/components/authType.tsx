@@ -1,0 +1,7 @@
+export type AuthStep =
+  | "MOBILE_ENTRY"
+  | "OTP_VERIFY"
+  | "REGISTER_DETAILS"
+  | "PASSWORD_LOGIN"
+  | "FORGOT_PASSWORD"
+  | "RESET_PASSWORD";

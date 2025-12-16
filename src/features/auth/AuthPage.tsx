@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { useLocation, useNavigate } from "react-router-dom";
-import {
-  AuthBanner,
-  MobileEntryForm,
-  PasswordLoginForm,
-  OtpVerification,
-  RegisterDetailsForm,
-  type AuthStep,
-  ForgotPasswordForm,
-  ResetPasswordForm,
-} from "./AuthComponents";
+
 import {
   useRequestOtpMutation,
   useLoginOtpMutation,
@@ -20,6 +11,14 @@ import {
   useResetPasswordMutation,
   useLazyGetProfileQuery,
 } from "./authApi";
+import type { AuthStep } from "./components/authType";
+import { MobileEntryForm } from "./components/MobileEntryForm";
+import { PasswordLoginForm } from "./components/PasswordLoginForm";
+import { OtpVerification } from "./components/OtpVerification";
+import { RegisterDetailsForm } from "./components/RegisterDetailsForm";
+import { ForgotPasswordForm } from "./components/ForgotPasswordForm";
+import { ResetPasswordForm } from "./components/ResetPasswordForm";
+import { AuthBanner } from "./components/AuthBanner";
 
 export const AuthPage = () => {
   const navigate = useNavigate();
