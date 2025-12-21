@@ -1,13 +1,106 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/src/assets/logo-chilla-login.svg"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>chilla-web</title>
+
+    <title>چله | تغییر از همین چله آغاز می‌شود</title>
+    <meta
+      name="description"
+      content="سامانه مدیریت چله‌نشینی و ساخت عادت‌های پایدار. با چله، در ۴۰ روز زندگی خود را تغییر دهید."
+    />
+    <meta
+      name="keywords"
+      content="چله نشینی, عادت سازی, توسعه فردی, برنامه ریزی"
+    />
+
+    <script type="module" src="/src/landing-script.ts"></script>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="bg-gray-50 font-sans text-gray-900">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <img
+          src="/src/assets/logo-chilla-login.svg"
+          alt="Logo"
+          class="w-10 h-10"
+        />
+        <span class="text-xl font-bold">چله</span>
+      </div>
+      <div>
+        <a
+          href="/app/"
+          class="bg-black text-white px-6 py-2 rounded-xl hover:bg-gray-800 transition-colors"
+        >
+          ورود به پنل
+        </a>
+      </div>
+    </nav>
+
+    <header class="container mx-auto px-6 py-20 text-center">
+      <h1
+        class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 leading-tight"
+      >
+        چله؛ <span class="text-blue-600">چهل قدم</span> تا تغییر ماندگار
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+        راز تغییرات بزرگ، نه در شدت تلاش، بلکه در "تداوم" آن نهفته است. عادت‌های
+        خود را بسازید و زندگی خود را متحول کنید.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a
+          href="/app/"
+          class="bg-black text-white px-8 py-4 rounded-2xl text-lg font-medium hover:scale-105 transition-transform shadow-lg"
+        >
+          شروع چله‌نشینی رایگان
+        </a>
+        <a
+          href="#features"
+          class="bg-white text-black border border-gray-200 px-8 py-4 rounded-2xl text-lg font-medium hover:bg-gray-50 transition-colors"
+        >
+          بیشتر بدانید
+        </a>
+      </div>
+    </header>
+
+    <section id="features" class="bg-white py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16">چرا سامانه چله؟</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="p-8 border border-gray-100 rounded-3xl hover:shadow-xl transition-shadow bg-gray-50"
+          >
+            <h3 class="text-xl font-bold mb-4">رهگیری دقیق</h3>
+            <p class="text-gray-600">
+              پیشرفت روزانه خود را ثبت کنید و نمودار رشد خود را ببینید.
+            </p>
+          </div>
+          <div
+            class="p-8 border border-gray-100 rounded-3xl hover:shadow-xl transition-shadow bg-gray-50"
+          >
+            <h3 class="text-xl font-bold mb-4">یادآور هوشمند</h3>
+            <p class="text-gray-600">
+              هیچ روزی را از دست ندهید، ما به شما یادآوری می‌کنیم.
+            </p>
+          </div>
+          <div
+            class="p-8 border border-gray-100 rounded-3xl hover:shadow-xl transition-shadow bg-gray-50"
+          >
+            <h3 class="text-xl font-bold mb-4">جامعه پویا</h3>
+            <p class="text-gray-600">با دیگران همراه شوید و انگیزه بگیرید.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-10 mt-20">
+      <div class="container mx-auto px-6 text-center">
+        <p>&copy; 1403 سامانه چله. تمامی حقوق محفوظ است.</p>
+      </div>
+    </footer>
   </body>
 </html>

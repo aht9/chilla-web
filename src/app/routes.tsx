@@ -16,57 +16,61 @@ const LoadingScreen = () => (
   </div>
 );
 
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Navigate to="/auth/login" replace />,
-  },
-  {
-    path: "auth",
-    element: <GuestGuard />,
-    children: [
-      {
-        element: <AuthLayout />,
-        children: [
-          {
-            path: "login",
-            element: (
-              <Suspense fallback={<LoadingScreen />}>
-                <AuthPage />
-              </Suspense>
-            ),
-          },
-          {
-            path: "register",
-            element: <Navigate to="/auth/login" replace />,
-          },
-        ],
-      },
-    ],
-  },
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Navigate to="/auth/login" replace />,
+    },
+    {
+      path: "auth",
+      element: <GuestGuard />,
+      children: [
+        {
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "login",
+              element: (
+                <Suspense fallback={<LoadingScreen />}>
+                  <AuthPage />
+                </Suspense>
+              ),
+            },
+            {
+              path: "register",
+              element: <Navigate to="/auth/login" replace />,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      path: "dashboard",
+      element: <AuthGuard />,
+      children: [
+        {
+          index: true,
+          element: (
+            <div className="p-10 text-center text-2xl">
+              خوش آمدید به داشبورد (اینجا بعدا طراحی می‌شود)
+            </div>
+          ),
+        },
+      ],
+    },
 
+    // --- صفحه 404 ---
+    {
+      path: "*",
+      element: (
+        <div className="h-screen flex items-center justify-center text-xl">
+          ۴۰۴ | صفحه یافت نشد
+        </div>
+      ),
+    },
+  ],
   {
-    path: "dashboard",
-    element: <AuthGuard />,
-    children: [
-      {
-        index: true,
-        element: (
-          <div className="p-10 text-center text-2xl">
-            خوش آمدید به داشبورد (اینجا بعدا طراحی می‌شود)
-          </div>
-        ),
-      },
-    ],
-  },
-
-  // --- صفحه 404 ---
-  {
-    path: "*",
-    element: (
-      <div className="h-screen flex items-center justify-center text-xl">
-        ۴۰۴ | صفحه یافت نشد
-      </div>
-    ),
-  },
-]);
+    basename: "/app",
+  }
+);
