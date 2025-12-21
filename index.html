@@ -1,96 +1,417 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="iconchilla.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>چله | تغییر از همین چله آغاز می‌شود</title>
+    <title>چله | رشد سبز و پایدار</title>
     <meta
       name="description"
-      content="سامانه مدیریت چله‌نشینی و ساخت عادت‌های پایدار. با چله، در ۴۰ روز زندگی خود را تغییر دهید."
-    />
-    <meta
-      name="keywords"
-      content="چله نشینی, عادت سازی, توسعه فردی, برنامه ریزی"
+      content="سامانه چله؛ ابزاری امن و مقرون‌به‌صرفه برای ساخت عادت‌های پایدار با حفظ کامل حریم خصوصی."
     />
 
     <script type="module" src="/src/landing-script.ts"></script>
+
+    <style>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      .animate-delay-200 {
+        animation-delay: 0.2s;
+      }
+      .animate-delay-400 {
+        animation-delay: 0.4s;
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      /* Smooth Gradient Text */
+      .text-gradient {
+        background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
   </head>
-  <body class="bg-gray-50 font-sans text-gray-900">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-2">
-        <img src="iconchilla.svg" alt="Logo" class="w-15 h-15" />
-      </div>
-      <div>
+  <body
+    class="bg-[#FDFBF7] text-stone-800 font-sans antialiased selection:bg-emerald-200 selection:text-emerald-900"
+  >
+    <nav
+      class="fixed w-full z-50 bg-[#FDFBF7]/90 backdrop-blur-md border-b border-stone-200/50 transition-all duration-300"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-3 group cursor-pointer">
+          <img
+            src="iconchilla.svg"
+            alt="Chilla Logo"
+            class="w-15 h-15 group-hover:rotate-12 transition-transform duration-500 filter sepia-[.3] hue-rotate-50"
+          />
+        </div>
+
+        <div class="hidden md:flex gap-8 text-sm font-medium text-stone-600">
+          <a
+            href="#how-it-works"
+            class="hover:text-emerald-700 transition-colors"
+            >سازوکار</a
+          >
+          <a href="#privacy" class="hover:text-emerald-700 transition-colors"
+            >حریم خصوصی</a
+          >
+          <a href="#pricing" class="hover:text-emerald-700 transition-colors"
+            >هزینه</a
+          >
+        </div>
+
         <a
           href="/app/"
-          class="bg-black text-white px-6 py-2 rounded-xl hover:bg-gray-800 transition-colors"
+          class="group relative px-6 py-2.5 bg-emerald-800 text-[#FDFBF7] rounded-xl font-medium overflow-hidden transition-all hover:bg-emerald-900 hover:shadow-lg hover:shadow-emerald-900/20"
         >
-          ورود به پنل
+          <span class="relative z-10">ورود به چله</span>
         </a>
       </div>
     </nav>
 
-    <header class="container mx-auto px-6 py-20 text-center">
-      <h1
-        class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 leading-tight"
-      >
-        چله؛ <span class="text-blue-600">چهل قدم</span> تا تغییر ماندگار
-      </h1>
-      <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-        راز تغییرات بزرگ، نه در شدت تلاش، بلکه در "تداوم" آن نهفته است. عادت‌های
-        خود را بسازید و زندگی خود را متحول کنید.
-      </p>
-      <div class="flex justify-center gap-4">
-        <a
-          href="/app/"
-          class="bg-black text-white px-8 py-4 rounded-2xl text-lg font-medium hover:scale-105 transition-transform shadow-lg"
+    <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-sm font-medium text-emerald-800 mb-8 animate-fade-in-up shadow-sm"
         >
-          شروع چله‌نشینی رایگان
-        </a>
-        <a
-          href="#features"
-          class="bg-white text-black border border-gray-200 px-8 py-4 rounded-2xl text-lg font-medium hover:bg-gray-50 transition-colors"
+          <span
+            class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"
+          ></span>
+          نسخه جدید: امن‌تر، سریع‌تر، زیباتر
+        </div>
+
+        <h1
+          class="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tight text-stone-900 max-w-5xl mx-auto animate-fade-in-up animate-delay-200"
         >
-          بیشتر بدانید
-        </a>
+          جوانه‌ی تغییر را در
+          <br class="hidden md:block" />
+          <span class="text-gradient">چهل روز سبز کنید</span>
+        </h1>
+
+        <p
+          class="text-lg md:text-xl text-stone-500 mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animate-delay-400"
+        >
+          چله فقط یک ابزار نیست؛ یک باغبان هوشمند برای عادت‌های شماست. ما محیطی
+          امن و آرام طراحی کرده‌ایم تا بدون دغدغه هزینه یا حریم خصوصی، روی رشد
+          خود تمرکز کنید.
+        </p>
+
+        <div
+          class="flex flex-col sm:flex-row justify-center gap-4 mb-20 animate-fade-in-up animate-delay-400"
+        >
+          <a
+            href="/app/"
+            class="px-8 py-4 bg-emerald-700 text-white text-lg font-bold rounded-2xl hover:scale-105 hover:bg-emerald-800 transition-all shadow-xl shadow-emerald-900/10 flex items-center justify-center gap-2"
+          >
+            شروع رایگان
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              ></path>
+            </svg>
+          </a>
+        </div>
+
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-100/40 rounded-full blur-3xl -z-10 animate-float"
+        ></div>
       </div>
     </header>
 
-    <section id="features" class="bg-white py-20">
+    <section id="how-it-works" class="py-24 bg-white relative">
       <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-16">چرا سامانه چله؟</h2>
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+          <h2 class="text-3xl md:text-4xl font-black text-emerald-900 mb-6">
+            مکانیزم رشد در چله
+          </h2>
+          <p class="text-stone-500 text-lg">
+            ما پیچیدگی‌های روانشناسی عادت را به ۴ قدم ساده تبدیل کرده‌ایم.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8">
           <div
-            class="p-8 border border-gray-100 rounded-3xl hover:shadow-xl transition-shadow bg-gray-50"
+            class="relative p-6 rounded-3xl bg-[#FDFBF7] border border-stone-100 hover:shadow-xl transition-all duration-300 group"
           >
-            <h3 class="text-xl font-bold mb-4">رهگیری دقیق</h3>
-            <p class="text-gray-600">
-              پیشرفت روزانه خود را ثبت کنید و نمودار رشد خود را ببینید.
+            <div
+              class="absolute -top-6 right-6 w-12 h-12 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-xl font-bold border-4 border-white"
+            >
+              1
+            </div>
+            <h3 class="text-xl font-bold mt-6 mb-3 text-stone-800">
+              تعریف بذر
+            </h3>
+            <p class="text-stone-500 text-sm leading-relaxed">
+              هدف خود را مشخص کنید. سیستم هوشمند ما کمک می‌کند اهداف بزرگ را به
+              قدم‌های کوچک و قابل انجام (Micro-habits) بشکنید.
             </p>
           </div>
           <div
-            class="p-8 border border-gray-100 rounded-3xl hover:shadow-xl transition-shadow bg-gray-50"
+            class="relative p-6 rounded-3xl bg-[#FDFBF7] border border-stone-100 hover:shadow-xl transition-all duration-300 group"
           >
-            <h3 class="text-xl font-bold mb-4">یادآور هوشمند</h3>
-            <p class="text-gray-600">
-              هیچ روزی را از دست ندهید، ما به شما یادآوری می‌کنیم.
+            <div
+              class="absolute -top-6 right-6 w-12 h-12 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-xl font-bold border-4 border-white"
+            >
+              2
+            </div>
+            <h3 class="text-xl font-bold mt-6 mb-3 text-stone-800">
+              آبیاری روزانه
+            </h3>
+            <p class="text-stone-500 text-sm leading-relaxed">
+              هر روز با یک کلیک ساده پیشرفت خود را ثبت کنید. رابط کاربری ما طوری
+              طراحی شده که ثبت کردن لذت‌بخش باشد، نه خسته‌کننده.
             </p>
           </div>
           <div
-            class="p-8 border border-gray-100 rounded-3xl hover:shadow-xl transition-shadow bg-gray-50"
+            class="relative p-6 rounded-3xl bg-[#FDFBF7] border border-stone-100 hover:shadow-xl transition-all duration-300 group"
           >
-            <h3 class="text-xl font-bold mb-4">جامعه پویا</h3>
-            <p class="text-gray-600">با دیگران همراه شوید و انگیزه بگیرید.</p>
+            <div
+              class="absolute -top-6 right-6 w-12 h-12 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-xl font-bold border-4 border-white"
+            >
+              3
+            </div>
+            <h3 class="text-xl font-bold mt-6 mb-3 text-stone-800">
+              تحلیل ریشه
+            </h3>
+            <p class="text-stone-500 text-sm leading-relaxed">
+              اگر زنجیره شما قطع شد، ابزارهای تحلیلی به شما نشان می‌دهند چرا و
+              در چه روزهایی آسیب‌پذیر هستید تا الگوی خود را اصلاح کنید.
+            </p>
+          </div>
+          <div
+            class="relative p-6 rounded-3xl bg-[#FDFBF7] border border-stone-100 hover:shadow-xl transition-all duration-300 group"
+          >
+            <div
+              class="absolute -top-6 right-6 w-12 h-12 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-xl font-bold border-4 border-white"
+            >
+              4
+            </div>
+            <h3 class="text-xl font-bold mt-6 mb-3 text-stone-800">
+              میوه دادن
+            </h3>
+            <p class="text-stone-500 text-sm leading-relaxed">
+              بعد از ۴۰ روز، رفتار جدید در ذهن شما سیم‌کشی شده است. حالا شما
+              صاحب یک عادت پایدار هستید.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-10 mt-20">
+    <section
+      id="privacy"
+      class="py-24 bg-stone-900 text-[#FDFBF7] overflow-hidden relative"
+    >
+      <div
+        class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16"
+      >
+        <div class="md:w-1/2">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-900/50 border border-emerald-700/50 text-emerald-400 text-xs font-bold mb-6"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
+            امنیت در اولویت
+          </div>
+          <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight">
+            داده‌های شما،<br />فقط مال شماست.
+          </h2>
+          <p class="text-stone-400 text-lg mb-8 leading-relaxed">
+            در دنیایی که اطلاعات کالا شده است، چله متعهد به حفظ حریم خصوصی
+            شماست. ما باور داریم مسیر رشد شخصی شما کاملاً خصوصی است.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-center gap-3 text-stone-300">
+              <span
+                class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"
+                >✓</span
+              >
+              رمزنگاری دوطرفه اطلاعات حساس
+            </li>
+            <li class="flex items-center gap-3 text-stone-300">
+              <span
+                class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"
+                >✓</span
+              >
+              عدم فروش داده‌ها به شرکت‌های تبلیغاتی (تضمینی)
+            </li>
+            <li class="flex items-center gap-3 text-stone-300">
+              <span
+                class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"
+                >✓</span
+              >
+              امکان حذف کامل حساب و داده‌ها در هر لحظه
+            </li>
+          </ul>
+        </div>
+        <div class="md:w-1/2 relative">
+          <div
+            class="w-full aspect-square rounded-[3rem] bg-gradient-to-br from-emerald-900 to-stone-800 border border-stone-700 flex items-center justify-center relative overflow-hidden group"
+          >
+            <div
+              class="absolute inset-0 bg-[url('/src/assets/grid-pattern.svg')] opacity-20"
+            ></div>
+            <svg
+              class="w-32 h-32 text-emerald-500 group-hover:scale-110 transition-transform duration-700"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              />
+            </svg>
+            <div
+              class="absolute inset-0 bg-emerald-500/10 blur-3xl rounded-full scale-50 group-hover:scale-75 transition-transform duration-700"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-[#F0FDF4]">
       <div class="container mx-auto px-6 text-center">
-        <p>&copy; 1403 سامانه چله. تمامی حقوق محفوظ است.</p>
+        <h2 class="text-3xl md:text-4xl font-black text-emerald-900 mb-6">
+          سرمایه‌گذاری روی خودتان،<br />ارزان‌تر از یک قهوه
+        </h2>
+        <p class="text-stone-600 mb-16 max-w-xl mx-auto">
+          ما هزینه‌ها را به حداقل رسانده‌ایم تا هیچ مانع مالی برای رشد وجود
+          نداشته باشد. تغییر زندگی نباید گران باشد.
+        </p>
+
+        <div
+          class="flex flex-col md:flex-row justify-center gap-8 items-center"
+        >
+          <div
+            class="bg-white p-8 rounded-3xl w-full md:w-80 shadow-sm border border-stone-100"
+          >
+            <h3 class="text-xl font-bold text-stone-800 mb-2">طرح جوانه</h3>
+            <div class="text-4xl font-black text-stone-900 mb-6">رایگان</div>
+            <ul class="text-right space-y-3 mb-8 text-sm text-stone-500">
+              <li class="flex items-center gap-2">🌱 پیگیری ۳ عادت همزمان</li>
+              <li class="flex items-center gap-2">📊 گزارش هفتگی ساده</li>
+              <li class="flex items-center gap-2">📱 دسترسی موبایل و وب</li>
+            </ul>
+            <a
+              href="/app/"
+              class="block w-full py-3 rounded-xl border-2 border-emerald-600 text-emerald-700 font-bold hover:bg-emerald-50 transition-colors"
+              >شروع کنید</a
+            >
+          </div>
+
+          <div
+            class="bg-gradient-to-b from-emerald-700 to-emerald-900 p-8 rounded-3xl w-full md:w-96 shadow-2xl shadow-emerald-900/20 transform md:-translate-y-4 relative"
+          >
+            <div
+              class="absolute -top-4 right-1/2 translate-x-1/2 bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full"
+            >
+              پیشنهاد ویژه
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">طرح درخت</h3>
+            <div class="flex items-center justify-center gap-1 mb-1 text-white">
+              <span class="text-2xl opacity-80 line-through decoration-red-400"
+                >۵۰</span
+              >
+              <span class="text-5xl font-black">۲۹</span>
+              <span class="text-sm opacity-80">هزار تومان / ماه</span>
+            </div>
+            <p class="text-emerald-200 text-xs mb-6">کمتر از قیمت یک اسنک!</p>
+
+            <ul class="text-right space-y-3 mb-8 text-sm text-emerald-100">
+              <li class="flex items-center gap-2">🌳 بی‌نهایت عادت</li>
+              <li class="flex items-center gap-2">
+                📈 تحلیل‌های پیشرفته و نمودار
+              </li>
+              <li class="flex items-center gap-2">
+                🔒 پشتیبان‌گیری ابری خودکار
+              </li>
+              <li class="flex items-center gap-2">
+                🎨 تم‌های اختصاصی و دارک‌مود
+              </li>
+            </ul>
+            <a
+              href="/app/"
+              class="block w-full py-3 rounded-xl bg-[#FDFBF7] text-emerald-900 font-bold hover:bg-white hover:scale-105 transition-transform shadow-lg"
+            >
+              فعال‌سازی آنی
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-[#FDFBF7] pt-20 pb-10 border-t border-stone-200">
+      <div class="container mx-auto px-6">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-6"
+        >
+          <div class="flex items-center gap-3">
+            <img
+              src="iconchilla.svg"
+              alt="Logo"
+              class="w-15 h-15 filter sepia opacity-70"
+            />
+            <span class="text-xl font-bold text-stone-700">چله</span>
+          </div>
+          <p class="text-stone-500 text-sm">
+            طراحی شده با ❤️ برای کسانی که به دنبال نسخه بهتر خود هستند.
+          </p>
+          <div class="flex gap-4 text-sm text-stone-400">
+            <a href="#" class="hover:text-emerald-700 transition-colors"
+              >قوانین</a
+            >
+            <a href="#" class="hover:text-emerald-700 transition-colors"
+              >پشتیبانی</a
+            >
+          </div>
+        </div>
       </div>
     </footer>
   </body>
