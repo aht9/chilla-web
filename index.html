@@ -4,415 +4,408 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="iconchilla.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>چله | دستیار هوشمند تهذیب نفس</title>
 
-    <title>چله | رشد سبز و پایدار</title>
     <meta
       name="description"
-      content="سامانه چله؛ ابزاری امن و مقرون‌به‌صرفه برای ساخت عادت‌های پایدار با حفظ کامل حریم خصوصی."
+      content="سامانه چله؛ بستری برای خودسازی و تزکیه نفس با استفاده از دستورات دینی و نظارت هوشمند."
     />
 
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script type="module" src="/src/landing-script.ts"></script>
 
     <style>
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      :root {
+        --color-bg: #f9f7f2; /* کرم خیلی روشن (رنگ کاغذ) */
+        --color-primary: #115e59; /* سبز یشمی تیره */
+        --color-accent: #d4af37; /* طلایی */
       }
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-      .animate-fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
-      }
-      .animate-delay-200 {
-        animation-delay: 0.2s;
-      }
-      .animate-delay-400 {
-        animation-delay: 0.4s;
-      }
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
+      body {
+        background-color: var(--color-bg);
+        color: #333;
       }
 
-      /* Smooth Gradient Text */
-      .text-gradient {
-        background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+      /* الگوی اسلیمی پس‌زمینه */
+      .islamic-pattern {
+        background-color: #f9f7f2;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23115e59' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+
+      .text-gold-gradient {
+        background: linear-gradient(135deg, #d4af37 0%, #b4941f 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
       }
     </style>
   </head>
   <body
-    class="bg-[#FDFBF7] text-stone-800 font-sans antialiased selection:bg-emerald-200 selection:text-emerald-900"
+    class="antialiased selection:bg-teal-100 selection:text-teal-900 islamic-pattern"
   >
     <nav
-      class="fixed w-full z-50 bg-[#FDFBF7]/90 backdrop-blur-md border-b border-stone-200/50 transition-all duration-300"
+      class="fixed w-full z-50 bg-[#F9F7F2]/90 backdrop-blur-md border-b border-teal-900/10"
     >
       <div
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
-        <div class="flex items-center gap-3 group cursor-pointer">
+        <div class="flex items-center gap-2 group">
           <img
             src="iconchilla.svg"
-            alt="Chilla Logo"
-            class="w-15 h-15 group-hover:rotate-12 transition-transform duration-500 filter sepia-[.3] hue-rotate-50"
+            alt="Chilla"
+            class="w-15 h-15 filter hue-rotate-[140deg] brightness-75"
           />
+          <span class="text-2xl font-bold text-teal-900">چله</span>
         </div>
-
-        <div class="hidden md:flex gap-8 text-sm font-medium text-stone-600">
-          <a
-            href="#how-it-works"
-            class="hover:text-emerald-700 transition-colors"
-            >سازوکار</a
+        <div class="hidden md:flex gap-10 text-sm font-semibold text-stone-600">
+          <a href="#philosophy" class="hover:text-teal-700 transition-colors"
+            >فلسفه چله</a
           >
-          <a href="#privacy" class="hover:text-emerald-700 transition-colors"
-            >حریم خصوصی</a
+          <a href="#plans" class="hover:text-teal-700 transition-colors"
+            >طرح‌های معنوی</a
           >
-          <a href="#pricing" class="hover:text-emerald-700 transition-colors"
-            >هزینه</a
+          <a href="#how" class="hover:text-teal-700 transition-colors"
+            >نحوه عملکرد</a
           >
         </div>
-
         <a
           href="/app/"
-          class="group relative px-6 py-2.5 bg-emerald-800 text-[#FDFBF7] rounded-xl font-medium overflow-hidden transition-all hover:bg-emerald-900 hover:shadow-lg hover:shadow-emerald-900/20"
+          class="px-6 py-2 bg-teal-800 text-[#F9F7F2] rounded-lg font-medium hover:bg-teal-900 transition-all shadow-lg shadow-teal-900/20"
         >
-          <span class="relative z-10">ورود به چله</span>
+          ورود به حساب کاربری
         </a>
       </div>
     </nav>
 
-    <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
+    <header class="pt-40 pb-20 lg:pt-56 overflow-hidden relative">
       <div class="container mx-auto px-6 text-center relative z-10">
         <div
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-sm font-medium text-emerald-800 mb-8 animate-fade-in-up shadow-sm"
+          class="inline-block mb-6 px-4 py-1 border border-teal-700/30 rounded-full text-teal-800 text-sm font-medium bg-teal-50"
+          data-aos="fade-down"
         >
-          <span
-            class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"
-          ></span>
-          نسخه جدید: امن‌تر، سریع‌تر، زیباتر
+          ✨ همراه هوشمند شما در مسیر بندگی
         </div>
-
         <h1
-          class="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tight text-stone-900 max-w-5xl mx-auto animate-fade-in-up animate-delay-200"
+          class="text-5xl md:text-7xl font-bold mb-8 leading-tight text-teal-950 font-serif"
+          data-aos="fade-up"
         >
-          جوانه‌ی تغییر را در
-          <br class="hidden md:block" />
-          <span class="text-gradient">چهل روز سبز کنید</span>
+          تزکیه نفس، در هیاهوی <br />
+          <span class="text-gold-gradient">زندگی مدرن</span>
         </h1>
-
         <p
-          class="text-lg md:text-xl text-stone-500 mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animate-delay-400"
+          class="text-lg md:text-xl text-stone-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+          data-aos="fade-up"
+          data-aos-delay="200"
         >
-          چله فقط یک ابزار نیست؛ یک باغبان هوشمند برای عادت‌های شماست. ما محیطی
-          امن و آرام طراحی کرده‌ایم تا بدون دغدغه هزینه یا حریم خصوصی، روی رشد
-          خود تمرکز کنید.
+          چله یک ابزار نیست؛ یک <b>مراقب معنوی</b> است. ما دستورات اصیل دینی را
+          در قالب برنامه‌های منظم (چله) آورده‌ایم تا با یادآوری‌های مداوم و رصد
+          دقیق، اجازه ندهیم مشغله‌های دنیا، شما را از خودسازی غافل کند.
         </p>
-
         <div
-          class="flex flex-col sm:flex-row justify-center gap-4 mb-20 animate-fade-in-up animate-delay-400"
+          class="flex flex-col sm:flex-row justify-center gap-4"
+          data-aos="zoom-in"
+          data-aos-delay="400"
         >
           <a
-            href="/app/"
-            class="px-8 py-4 bg-emerald-700 text-white text-lg font-bold rounded-2xl hover:scale-105 hover:bg-emerald-800 transition-all shadow-xl shadow-emerald-900/10 flex items-center justify-center gap-2"
+            href="#plans"
+            class="px-10 py-4 bg-teal-800 text-[#F9F7F2] text-lg font-bold rounded-xl hover:bg-teal-900 transition-all shadow-xl shadow-teal-900/20"
           >
-            شروع رایگان
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              ></path>
-            </svg>
+            انتخاب چله (شروع رایگان)
           </a>
         </div>
-
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-100/40 rounded-full blur-3xl -z-10 animate-float"
-        ></div>
       </div>
+
+      <div
+        class="absolute top-0 left-0 w-64 h-64 bg-teal-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+      ></div>
+      <div
+        class="absolute bottom-0 right-0 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"
+      ></div>
     </header>
 
-    <section id="how-it-works" class="py-24 bg-white relative">
+    <section id="philosophy" class="py-20 bg-white border-y border-stone-100">
       <div class="container mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto mb-20">
-          <h2 class="text-3xl md:text-4xl font-black text-emerald-900 mb-6">
-            مکانیزم رشد در چله
-          </h2>
-          <p class="text-stone-500 text-lg">
-            ما پیچیدگی‌های روانشناسی عادت را به ۴ قدم ساده تبدیل کرده‌ایم.
-          </p>
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div data-aos="fade-left">
+            <h2 class="text-3xl md:text-4xl font-bold text-teal-900 mb-6">
+              چرا به «چله» نیاز داریم؟
+            </h2>
+            <p class="text-stone-600 leading-8 text-lg mb-6 text-justify">
+              در روایات ما عدد <b>چهل</b> رمز کمال و پختگی است. اما در زندگی
+              شلوغ امروز، پایبندی به یک عمل مستحب یا ترک یک مکروه برای ۴۰ روز
+              متوالی، دشوار شده است. فراموشی، آفتِ استقامت است.
+            </p>
+            <p class="text-stone-600 leading-8 text-lg text-justify">
+              سامانه چله طراحی شده تا نقش <b>«رفیق طریق»</b> را بازی کند. ما با
+              ابزارهای دیجیتال، همان کاری را می‌کنیم که اساتید اخلاق توصیه
+              کرده‌اند:
+              <b>مشارطه (عهد بستن)، مراقبه (پایش) و محاسبه (بررسی عملکرد).</b>
+            </p>
+          </div>
+          <div class="relative" data-aos="zoom-in">
+            <div
+              class="aspect-square bg-teal-50 rounded-[3rem] border border-teal-100 flex items-center justify-center relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')]"
+              ></div>
+              <div class="text-center p-8">
+                <div class="text-6xl mb-4 text-teal-800">📿</div>
+                <div class="text-xl font-bold text-teal-900">
+                  «مَنْ أَخْلَصَ لِلَّهِ أَرْبَعِينَ صَبَاحًا...»
+                </div>
+                <div class="text-sm text-teal-700 mt-2">
+                  هر کس چهل روز خود را برای خدا خالص کند...
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section id="how" class="py-24 bg-[#F9F7F2]">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-teal-900 mb-16">
+          سازوکار سامانه (سیر و سلوک دیجیتال)
+        </h2>
 
         <div class="grid md:grid-cols-4 gap-8">
           <div
-            class="relative p-6 rounded-3xl bg-[#FDFBF7] border border-stone-100 hover:shadow-xl transition-all duration-300 group"
+            class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 card-hover"
+            data-aos="fade-up"
+            data-aos-delay="0"
           >
             <div
-              class="absolute -top-6 right-6 w-12 h-12 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-xl font-bold border-4 border-white"
+              class="w-14 h-14 bg-teal-100 text-teal-800 rounded-xl flex items-center justify-center text-2xl mx-auto mb-6"
             >
-              1
+              ۱
             </div>
-            <h3 class="text-xl font-bold mt-6 mb-3 text-stone-800">
-              تعریف بذر
-            </h3>
-            <p class="text-stone-500 text-sm leading-relaxed">
-              هدف خود را مشخص کنید. سیستم هوشمند ما کمک می‌کند اهداف بزرگ را به
-              قدم‌های کوچک و قابل انجام (Micro-habits) بشکنید.
+            <h3 class="text-xl font-bold mb-3 text-teal-900">نیت و انتخاب</h3>
+            <p class="text-stone-600 text-sm">
+              از میان دستورات معتبر (نماز، قرآن، اخلاق)، چله‌ی مورد نظر خود را
+              انتخاب کرده و به داشبورد اضافه می‌کنید.
             </p>
           </div>
+
           <div
-            class="relative p-6 rounded-3xl bg-[#FDFBF7] border border-stone-100 hover:shadow-xl transition-all duration-300 group"
+            class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 card-hover"
+            data-aos="fade-up"
+            data-aos-delay="100"
           >
             <div
-              class="absolute -top-6 right-6 w-12 h-12 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-xl font-bold border-4 border-white"
+              class="w-14 h-14 bg-teal-100 text-teal-800 rounded-xl flex items-center justify-center text-2xl mx-auto mb-6"
             >
-              2
+              ۲
             </div>
-            <h3 class="text-xl font-bold mt-6 mb-3 text-stone-800">
-              آبیاری روزانه
-            </h3>
-            <p class="text-stone-500 text-sm leading-relaxed">
-              هر روز با یک کلیک ساده پیشرفت خود را ثبت کنید. رابط کاربری ما طوری
-              طراحی شده که ثبت کردن لذت‌بخش باشد، نه خسته‌کننده.
+            <h3 class="text-xl font-bold mb-3 text-teal-900">عمل و مداومت</h3>
+            <p class="text-stone-600 text-sm">
+              هر روز طبق دستورالعمل اقدام می‌کنید. طول دوره‌ها متغیر است (از ۴۰
+              روز تا یک سال).
             </p>
           </div>
+
           <div
-            class="relative p-6 rounded-3xl bg-[#FDFBF7] border border-stone-100 hover:shadow-xl transition-all duration-300 group"
+            class="bg-teal-900 p-8 rounded-2xl shadow-xl card-hover transform md:-translate-y-4"
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
             <div
-              class="absolute -top-6 right-6 w-12 h-12 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-xl font-bold border-4 border-white"
+              class="w-14 h-14 bg-gold-500 bg-[#D4AF37] text-white rounded-xl flex items-center justify-center text-2xl mx-auto mb-6"
             >
-              3
+              ۳
             </div>
-            <h3 class="text-xl font-bold mt-6 mb-3 text-stone-800">
-              تحلیل ریشه
-            </h3>
-            <p class="text-stone-500 text-sm leading-relaxed">
-              اگر زنجیره شما قطع شد، ابزارهای تحلیلی به شما نشان می‌دهند چرا و
-              در چه روزهایی آسیب‌پذیر هستید تا الگوی خود را اصلاح کنید.
+            <h3 class="text-xl font-bold mb-3 text-white">رصد هوشمند</h3>
+            <p class="text-teal-100 text-sm">
+              مهم‌ترین بخش! سیستم اگر غفلت شما را حس کند، با نوتیفیکیشن و پیامک
+              یادآوری می‌کند تا زنجیره پاره نشود.
             </p>
           </div>
+
           <div
-            class="relative p-6 rounded-3xl bg-[#FDFBF7] border border-stone-100 hover:shadow-xl transition-all duration-300 group"
+            class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 card-hover"
+            data-aos="fade-up"
+            data-aos-delay="300"
           >
             <div
-              class="absolute -top-6 right-6 w-12 h-12 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-xl font-bold border-4 border-white"
+              class="w-14 h-14 bg-teal-100 text-teal-800 rounded-xl flex items-center justify-center text-2xl mx-auto mb-6"
             >
-              4
+              ۴
             </div>
-            <h3 class="text-xl font-bold mt-6 mb-3 text-stone-800">
-              میوه دادن
-            </h3>
-            <p class="text-stone-500 text-sm leading-relaxed">
-              بعد از ۴۰ روز، رفتار جدید در ذهن شما سیم‌کشی شده است. حالا شما
-              صاحب یک عادت پایدار هستید.
+            <h3 class="text-xl font-bold mb-3 text-teal-900">محاسبه نفس</h3>
+            <p class="text-stone-600 text-sm">
+              در پایان هر دوره، نمودار عملکرد خود را می‌بینید. نقاط ضعف و قوت
+              شما در بندگی مشخص می‌شود.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section
-      id="privacy"
-      class="py-24 bg-stone-900 text-[#FDFBF7] overflow-hidden relative"
-    >
+    <section id="plans" class="py-24 bg-white relative">
       <div
-        class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16"
-      >
-        <div class="md:w-1/2">
-          <div
-            class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-900/50 border border-emerald-700/50 text-emerald-400 text-xs font-bold mb-6"
-          >
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-              />
-            </svg>
-            امنیت در اولویت
-          </div>
-          <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight">
-            داده‌های شما،<br />فقط مال شماست.
+        class="absolute top-0 w-full h-20 bg-gradient-to-b from-[#F9F7F2] to-white"
+      ></div>
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-teal-900 mb-4">
+            گنجینه طرح‌های معنوی
           </h2>
-          <p class="text-stone-400 text-lg mb-8 leading-relaxed">
-            در دنیایی که اطلاعات کالا شده است، چله متعهد به حفظ حریم خصوصی
-            شماست. ما باور داریم مسیر رشد شخصی شما کاملاً خصوصی است.
+          <p class="text-stone-500">
+            برخی از محبوب‌ترین چله‌های فعال در سامانه
           </p>
-          <ul class="space-y-4">
-            <li class="flex items-center gap-3 text-stone-300">
-              <span
-                class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"
-                >✓</span
-              >
-              رمزنگاری دوطرفه اطلاعات حساس
-            </li>
-            <li class="flex items-center gap-3 text-stone-300">
-              <span
-                class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"
-                >✓</span
-              >
-              عدم فروش داده‌ها به شرکت‌های تبلیغاتی (تضمینی)
-            </li>
-            <li class="flex items-center gap-3 text-stone-300">
-              <span
-                class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"
-                >✓</span
-              >
-              امکان حذف کامل حساب و داده‌ها در هر لحظه
-            </li>
-          </ul>
         </div>
-        <div class="md:w-1/2 relative">
-          <div
-            class="w-full aspect-square rounded-[3rem] bg-gradient-to-br from-emerald-900 to-stone-800 border border-stone-700 flex items-center justify-center relative overflow-hidden group"
-          >
-            <div
-              class="absolute inset-0 bg-[url('/src/assets/grid-pattern.svg')] opacity-20"
-            ></div>
-            <svg
-              class="w-32 h-32 text-emerald-500 group-hover:scale-110 transition-transform duration-700"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1"
-                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-              />
-            </svg>
-            <div
-              class="absolute inset-0 bg-emerald-500/10 blur-3xl rounded-full scale-50 group-hover:scale-75 transition-transform duration-700"
-            ></div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="pricing" class="py-24 bg-[#F0FDF4]">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-black text-emerald-900 mb-6">
-          سرمایه‌گذاری روی خودتان،<br />ارزان‌تر از یک قهوه
-        </h2>
-        <p class="text-stone-600 mb-16 max-w-xl mx-auto">
-          ما هزینه‌ها را به حداقل رسانده‌ایم تا هیچ مانع مالی برای رشد وجود
-          نداشته باشد. تغییر زندگی نباید گران باشد.
-        </p>
-
-        <div
-          class="flex flex-col md:flex-row justify-center gap-8 items-center"
-        >
+        <div class="grid md:grid-cols-3 gap-8">
           <div
-            class="bg-white p-8 rounded-3xl w-full md:w-80 shadow-sm border border-stone-100"
+            class="border border-stone-200 rounded-2xl p-6 hover:border-teal-500 transition-colors group bg-[#FDFBF7]"
+            data-aos="fade-right"
           >
-            <h3 class="text-xl font-bold text-stone-800 mb-2">طرح جوانه</h3>
-            <div class="text-4xl font-black text-stone-900 mb-6">رایگان</div>
-            <ul class="text-right space-y-3 mb-8 text-sm text-stone-500">
-              <li class="flex items-center gap-2">🌱 پیگیری ۳ عادت همزمان</li>
-              <li class="flex items-center gap-2">📊 گزارش هفتگی ساده</li>
-              <li class="flex items-center gap-2">📱 دسترسی موبایل و وب</li>
+            <div class="flex justify-between items-start mb-6">
+              <div class="p-3 bg-teal-100 rounded-lg text-teal-800">📖</div>
+              <span
+                class="px-3 py-1 bg-teal-600 text-white text-xs rounded-full"
+                >رایگان</span
+              >
+            </div>
+            <h3 class="text-xl font-bold text-teal-900 mb-2">
+              چله انس با قرآن
+            </h3>
+            <p class="text-stone-500 text-sm mb-6">
+              روزی یک صفحه قرآن با معنی. مناسب برای شروع ارتباط مستمر با کلام
+              وحی.
+            </p>
+            <ul class="space-y-2 text-sm text-stone-600 mb-8">
+              <li class="flex gap-2">✓ مدت: ۴۰ روز</li>
+              <li class="flex gap-2">✓ فایل صوتی روزانه</li>
+              <li class="flex gap-2">✓ یادآور اذان‌گاهی</li>
             </ul>
             <a
               href="/app/"
-              class="block w-full py-3 rounded-xl border-2 border-emerald-600 text-emerald-700 font-bold hover:bg-emerald-50 transition-colors"
+              class="block w-full text-center py-3 border border-teal-600 text-teal-700 rounded-xl font-bold hover:bg-teal-50"
               >شروع کنید</a
             >
           </div>
 
           <div
-            class="bg-gradient-to-b from-emerald-700 to-emerald-900 p-8 rounded-3xl w-full md:w-96 shadow-2xl shadow-emerald-900/20 transform md:-translate-y-4 relative"
+            class="border border-teal-200 bg-gradient-to-br from-teal-50 to-white rounded-2xl p-6 shadow-lg relative overflow-hidden"
+            data-aos="fade-up"
           >
             <div
-              class="absolute -top-4 right-1/2 translate-x-1/2 bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full"
+              class="absolute top-0 right-0 bg-[#D4AF37] text-white text-xs px-4 py-1 rounded-bl-xl font-bold"
             >
               پیشنهاد ویژه
             </div>
-            <h3 class="text-xl font-bold text-white mb-2">طرح درخت</h3>
-            <div class="flex items-center justify-center gap-1 mb-1 text-white">
-              <span class="text-2xl opacity-80 line-through decoration-red-400"
-                >۵۰</span
-              >
-              <span class="text-5xl font-black">۲۹</span>
-              <span class="text-sm opacity-80">هزار تومان / ماه</span>
+            <div class="flex justify-between items-start mb-6">
+              <div class="p-3 bg-teal-800 text-white rounded-lg">🌙</div>
+              <span class="text-teal-800 font-bold text-sm">اشتراک ویژه</span>
             </div>
-            <p class="text-emerald-200 text-xs mb-6">کمتر از قیمت یک اسنک!</p>
-
-            <ul class="text-right space-y-3 mb-8 text-sm text-emerald-100">
-              <li class="flex items-center gap-2">🌳 بی‌نهایت عادت</li>
-              <li class="flex items-center gap-2">
-                📈 تحلیل‌های پیشرفته و نمودار
-              </li>
-              <li class="flex items-center gap-2">
-                🔒 پشتیبان‌گیری ابری خودکار
-              </li>
-              <li class="flex items-center gap-2">
-                🎨 تم‌های اختصاصی و دارک‌مود
-              </li>
+            <h3 class="text-xl font-bold text-teal-900 mb-2">چله نماز شب</h3>
+            <p class="text-stone-500 text-sm mb-6">
+              برنامه گام‌به‌گام برای سحرخیزی. از ۱۱ رکعت شروع نمی‌کنیم، قدم به
+              قدم جلو می‌رویم.
+            </p>
+            <ul class="space-y-2 text-sm text-stone-600 mb-8">
+              <li class="flex gap-2">✓ مدت: ۶۰ روز</li>
+              <li class="flex gap-2">✓ بیدارباش هوشمند (تماس)</li>
+              <li class="flex gap-2">✓ محتوای انگیزشی سحر</li>
             </ul>
             <a
               href="/app/"
-              class="block w-full py-3 rounded-xl bg-[#FDFBF7] text-emerald-900 font-bold hover:bg-white hover:scale-105 transition-transform shadow-lg"
+              class="block w-full text-center py-3 bg-teal-800 text-white rounded-xl font-bold hover:bg-teal-900 shadow-md"
+              >مشاهده جزئیات</a
             >
-              فعال‌سازی آنی
-            </a>
           </div>
+
+          <div
+            class="border border-stone-200 rounded-2xl p-6 hover:border-teal-500 transition-colors group bg-[#FDFBF7]"
+            data-aos="fade-left"
+          >
+            <div class="flex justify-between items-start mb-6">
+              <div class="p-3 bg-teal-100 rounded-lg text-teal-800">🤐</div>
+              <span
+                class="px-3 py-1 bg-stone-200 text-stone-600 text-xs rounded-full"
+                >تخصصی</span
+              >
+            </div>
+            <h3 class="text-xl font-bold text-teal-900 mb-2">
+              مدیریت زبان (غیبت/دروغ)
+            </h3>
+            <p class="text-stone-500 text-sm mb-6">
+              سخت‌ترین و مهم‌ترین چله. تمرین سکوت و محاسبه‌ی کلام در پایان هر
+              روز.
+            </p>
+            <ul class="space-y-2 text-sm text-stone-600 mb-8">
+              <li class="flex gap-2">✓ مدت: ۱۲۰ روز</li>
+              <li class="flex gap-2">✓ جدول محاسبه اعمال</li>
+              <li class="flex gap-2">✓ راهکارهای عملی ترک</li>
+            </ul>
+            <a
+              href="/app/"
+              class="block w-full text-center py-3 border border-teal-600 text-teal-700 rounded-xl font-bold hover:bg-teal-50"
+              >شروع کنید</a
+            >
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <p class="text-stone-500 text-sm mb-4">
+            بیش از ۵۰ برنامه معنوی دیگر در داشبورد منتظر شماست
+          </p>
+          <a
+            href="/app/"
+            class="inline-flex items-center gap-2 text-teal-700 font-bold hover:underline"
+          >
+            ورود به کتابخانه چله‌ها
+            <span>←</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <footer class="bg-[#FDFBF7] pt-20 pb-10 border-t border-stone-200">
-      <div class="container mx-auto px-6">
-        <div
-          class="flex flex-col md:flex-row justify-between items-center gap-6"
-        >
-          <div class="flex items-center gap-3">
-            <img
-              src="iconchilla.svg"
-              alt="Logo"
-              class="w-15 h-15 filter sepia opacity-70"
-            />
-            <span class="text-xl font-bold text-stone-700">چله</span>
-          </div>
-          <p class="text-stone-500 text-sm">
-            طراحی شده با ❤️ برای کسانی که به دنبال نسخه بهتر خود هستند.
-          </p>
-          <div class="flex gap-4 text-sm text-stone-400">
-            <a href="#" class="hover:text-emerald-700 transition-colors"
-              >قوانین</a
-            >
-            <a href="#" class="hover:text-emerald-700 transition-colors"
-              >پشتیبانی</a
-            >
-          </div>
+    <section class="py-20 bg-[#112D29] text-stone-300">
+      <div class="container mx-auto px-6 text-center max-w-4xl">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">
+          خلوت شما، امانت ماست
+        </h2>
+        <p class="text-lg leading-relaxed mb-8">
+          ما می‌دانیم که مسیر خودسازی، شخصی‌ترین بخش زندگی مومن است. اطلاعات
+          عبادی، خطاها و پیشرفت‌های شما در سرورهای ما به صورت
+          <b>رمزنگاری شده</b> ذخیره می‌شود. حتی تیم فنی چله به جزئیات اعمال شما
+          دسترسی ندارد. اینجا فضایی امن برای محاسبه‌ی نفس است.
+        </p>
+        <div class="flex justify-center gap-8 text-sm opacity-70">
+          <div class="flex items-center gap-2">🔒 رمزنگاری پیشرفته</div>
+          <div class="flex items-center gap-2">🛡️ بدون تبلیغات</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-10 bg-[#0D2320] text-stone-500 border-t border-white/5">
+      <div
+        class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="text-sm">
+          © ۱۴۰۳ سامانه چله. <span class="hidden md:inline">|</span>
+          <span class="text-stone-400">تغییر، از همین چله آغاز می‌شود.</span>
+        </div>
+        <div class="flex gap-6 text-sm">
+          <a href="#" class="hover:text-teal-300">قوانین</a>
+          <a href="#" class="hover:text-teal-300">ارتباط با ما</a>
         </div>
       </div>
     </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800, once: true, offset: 50 });
+    </script>
   </body>
 </html>
