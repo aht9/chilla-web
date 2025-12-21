@@ -6,9 +6,9 @@ import { AlertCircle, Lock, User, Mail } from "lucide-react";
 interface InputFieldProps {
   name: string;
   label: string;
-  value: string; // مقدار را از پدر می‌گیرد
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // تابع تغییر را از پدر می‌گیرد
-  error?: string; // ارور را از پدر می‌گیرد
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  error?: string;
   type?: string;
   icon?: any;
   dir?: "rtl" | "ltr";
@@ -40,8 +40,8 @@ const InputField = ({
       <input
         type={type}
         name={name}
-        value={value} // ✅ مقدار از پراپ می‌آید
-        onChange={onChange} // ✅ هندلر از پراپ می‌آید
+        value={value}
+        onChange={onChange}
         dir={dir}
         className={clsx(
           "w-full h-12 border rounded-xl outline-none transition-all bg-gray-50 hover:bg-white",
@@ -128,23 +128,19 @@ export const RegisterDetailsForm = ({
 
   const handleSubmit = (e?: React.FormEvent) => {
     if (e) {
-      e.preventDefault(); // Only call preventDefault if it's an event
+      e.preventDefault();
     }
-    // الف) اعتبارسنجی کل فرم
     const result = registerSchema.safeParse(formData);
 
     if (!result.success) {
-      // ب) اگر خطا داشت، تبدیل فرمت Zod به فرمت ساده برای نمایش
       const newErrors: any = {};
       result.error.issues.forEach((issue) => {
-        // path[0] نام فیلد است (مثلا email)
         newErrors[issue.path[0]] = issue.message;
       });
       setErrors(newErrors);
       return;
     }
 
-    // ج) اگر موفق بود
     setErrors({});
     onSubmit(result.data);
   };
@@ -152,10 +148,6 @@ export const RegisterDetailsForm = ({
   return (
     <form onSubmit={handleSubmit} className="space-y-4 animate-fade-in">
       <div className="grid grid-cols-2 gap-4">
-        {/* حالا اینجا پراپ‌ها را پاس می‌دهیم.
-                   چون InputField ثابت است و دوباره ساخته نمی‌شود،
-                   فوکوس حفظ می‌شود. 
-                */}
         <InputField
           name="firstName"
           label="نام"

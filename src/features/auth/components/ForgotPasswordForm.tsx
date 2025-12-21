@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { z } from "zod";
 import { clsx } from "clsx";
+import { useState } from "react";
 import { Smartphone, ArrowLeft } from "lucide-react";
 
 interface ForgotPasswordFormProps {
@@ -18,24 +17,39 @@ export const ForgotPasswordForm = ({
   isLoading,
   onBack,
 }: ForgotPasswordFormProps) => {
-  const [error, setError] = useState<string | null>(null);
-
-  // validation schema (same as mobile entry)
-  const mobileSchema = z
-    .string()
-    .min(1, "لطفا شماره موبایل را وارد کنید")
-    .regex(/^09[0-9]{9}$/, "شماره باید ۱۱ رقم و با 09 شروع شود");
+  const [errors, setErrors] = useState<
+    Array<{ message: string; isValid: boolean }>
+  >([]);
 
   const handleSubmit = (e?: React.FormEvent) => {
     e?.preventDefault();
-    const result = mobileSchema.safeParse(mobile);
-    if (!result.success) {
-      setError(result.error.issues[0].message);
+    const hasError = errors.some((e) => !e.isValid);
+    if (hasError) {
       return;
     }
-    setError(null);
+
+    setErrors([]);
     onSubmit();
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setMobile(value);
+    const trimmed = value.trim();
+    if (trimmed === "") {
+      setErrors([]);
+    } else {
+      const startsWith09 = trimmed.startsWith("09");
+      const is11Digits = /^\d{11}$/.test(trimmed);
+      const newErrors = [
+        { message: "شماره باید با 09 شروع شود", isValid: startsWith09 },
+        { message: "شماره باید ۱۱ رقم باشد", isValid: is11Digits },
+      ];
+      setErrors(newErrors);
+    }
+  };
+
+  const hasError = errors.some((e) => !e.isValid);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
@@ -47,37 +61,41 @@ export const ForgotPasswordForm = ({
           <Smartphone
             className={clsx(
               "absolute right-3 top-3 w-5 h-5 transition-colors",
-              error ? "text-red-500" : "text-gray-400"
+              hasError ? "text-red-500" : "text-gray-400"
             )}
           />
           <input
             type="tel"
             value={mobile}
-            onChange={(e) => {
-              setMobile(e.target.value);
-              if (error) setError(null);
-            }}
+            onChange={handleChange}
             placeholder="0912..."
             maxLength={11}
             className={clsx(
               "w-full h-12 pr-10 pl-4 border rounded-xl outline-none transition-all bg-gray-50 hover:bg-white",
-              error
+              hasError
                 ? "border-red-500 focus:ring-2 focus:ring-red-200"
-                : "border-gray-200 focus:ring-2 focus:ring-black"
+                : "border-gray-200 focus:ring-2 focus:ring-black focus:border-transparent"
             )}
             autoFocus
           />
         </div>
-        {error && (
-          <p className="text-red-500 text-xs font-medium animate-pulse">
-            {error}
+
+        {errors.map((err, idx) => (
+          <p
+            key={idx}
+            className={clsx(
+              "text-xs font-medium animate-pulse",
+              err.isValid ? "text-green-500" : "text-red-500"
+            )}
+          >
+            {err.message}
           </p>
-        )}
+        ))}
       </div>
 
       <button
-        disabled={isLoading}
-        className="w-full h-12 bg-black text-white rounded-xl font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+        disabled={isLoading || mobile.trim() === "" || hasError}
+        className="w-full h-12 bg-black text-white rounded-xl font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {isLoading ? (
           <span className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
